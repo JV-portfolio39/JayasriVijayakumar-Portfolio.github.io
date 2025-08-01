@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jayasri Vijayakumar - Cybersecurity & Motion Design Portfolio</title>
+    <meta name="description" content="Jayasri Vijayakumar - CompTIA Security+ Certified Cybersecurity Professional and Motion Designer based in Stockholm, Sweden">
+    <meta name="keywords" content="cybersecurity, motion design, CompTIA Security+, portfolio, Stockholm, UX/UI designer">
+    <meta name="author" content="Jayasri Vijayakumar">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👩‍💻</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --accent: #00d4ff;
+            --accent-hover: #00b8e6;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+            animation: backgroundFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            background: var(--primary-gradient);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .profile-placeholder {
+            width: 100%;
+            height: 400px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: var(--card-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .experience-company {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .experience-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-item {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 10, 0.9);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                padding: 3rem 5%;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">JV</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Jayasri Vijayakumar</h1>
+            <p class="subtitle">CompTIA Security+ Certified | Cybersecurity Enthusiast | Motion Designer</p>
+            <p class="description">
+                A creative soul with a tech edge. Bridging the gap between art and technology, 
+                I thrive at the intersection of creativity and security. Crafting captivating 
+                motion graphics by day and diving deep into cybersecurity by night.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section fade-in">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <div class="profile-placeholder">👩‍💻</div>
+            </div>
+            <div class="about-text">
+                <h3>Creative Technologist & Security Expert</h3>
+                <p>
+                    Hi, I'm Jayasri — a unique blend of creativity and technical expertise. Based in Stockholm, Sweden, 
+                    I bring together my passion for visual storytelling and cybersecurity to create meaningful digital experiences 
+                    while ensuring they're secure and robust.
+                </p>
+                <p>
+                    My journey spans from motion graphics and 3D animation to threat detection and risk assessment. 
+                    This diverse background gives me a unique perspective on digital innovation, allowing me to approach 
+                    problems from both creative and analytical angles.
+                </p>
+                <p>
+                    <strong>What sets me apart:</strong><br>
+                    → Unique blend of design thinking and technical know-how<br>
+                    → Hands-on experience with Adobe Creative Suite, ELK, Splunk, and security tools<br>
+                    → Proactive mindset eager to collaborate, solve problems, and grow
+                </p>
+                <div class="skills-list">
+                    <span class="skill-tag">Cybersecurity</span>
+                    <span class="skill-tag">CompTIA Security+</span>
+                    <span class="skill-tag">Motion Design</span>
+                    <span class="skill-tag">3D Animation</span>
+                    <span class="skill-tag">Blender</span>
+                    <span class="skill-tag">Cinema 4D</span>
+                    <span class="skill-tag">Adobe Creative Suite</span>
+                    <span class="skill-tag">TIBCO BW5</span>
+                    <span class="skill-tag">UX/UI Design</span>
+                    <span class="skill-tag">Cloud Security</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section fade-in">
+        <h2>Professional Experience</h2>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Motion Designer</div>
+                        <div class="experience-company">SkillGround.com</div>
+                        <div class="experience-period">Feb 2025 - Jun 2025</div>
+                    </div>
+                </div>
+                <div class="experience-description">
+                    Created promotional motion graphics and animations for branded content. Produced stylized 2D animations 
+                    using Adobe After Effects and optimized workflows to support fast turnarounds for educational videos. 
+                    Collaborated closely with editors, designers, and creative directors.
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">UX/UI Designer & Web Developer</div>
+                        <div class="experience-company">Landell Games</div>
+                        <div class="experience-period">Jul 2023 - Oct 2023</div>
+                    </div>
+                </div>
+                <div class="experience-description">
+                    Managed comprehensive content creation and localization strategies. Collaborated with technical experts 
+                    and marketing professionals to produce engaging content. Worked efficiently to deliver high-quality 
+                    work within tight deadlines while maintaining industry best practices.
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">UX/UI Designer & Web Developer</div>
+                        <div class="experience-company">Trailsi AB</div>
+                        <div class="experience-period">Feb 2023 - Jun 2023</div>
+                    </div>
+                </div>
+                <div class="experience-description">
+                    Created application designs, wireframes, and working model prototypes. Participated in pre-project 
+                    analysis and technical assessments. Worked with Headless CMS Storyblok to integrate applications 
+                    into Android and iOS versions. Developed user-friendly tutorials and participated in agile development cycles.
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Associate Software Engineer</div>
+                        <div class="experience-company">Tech Mahindra</div>
+                        <div class="experience-period">Aug 2015 - Mar 2017</div>
+                    </div>
+                </div>
+                <div class="experience-description">
+                    Worked as Associate Software Engineer in H3G project using TIBCO BW5 tool Middleware. 
+                    Developed well-tested code for various software projects and integrated third-party applications. 
+                    Specialized in XML/SOAP/WSDL implementations and firewall pipeline development for secure data transfer.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="section fade-in">
+        <h2>Certifications & Education</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-icon">🛡️</div>
+                <h3>CompTIA Security+ ce</h3>
+                <p>Jul 2025 - Jul 2028</p>
+                <p>Comprehensive cybersecurity certification covering network security, threat detection, risk mitigation, and incident response.</p>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">🎨</div>
+                <h3>Motion Creative</h3>
+                <p>Hyper Island - Aug 2024 - Jun 2025</p>
+                <p>Associate's degree with distinction in Motion Creative, focusing on illustration, animations, and collaborative project work.</p>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">🤖</div>
+                <h3>Artificial Intelligence</h3>
+                <p>IBM - Apr 2024</p>
+                <p>Comprehensive AI certification covering machine learning, neural networks, and practical AI implementation strategies.</p>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">🌱</div>
+                <h3>Sustainability Change Leadership</h3>
+                <p>Hyper Island - Apr 2024 - Oct 2024</p>
+                <p>Upskill course focusing on sustainable practices and change management in technology organizations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section fade-in">
+        <h2>Let's Connect</h2>
+        <div class="contact-content">
+            <p>I'm always open to discussing new opportunities, collaborations, or just having a chat about the intersection of creativity and cybersecurity.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <p>Stockholm, Sweden</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <p>linkedin.com/in/jvanimations</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🎯</div>
+                    <h3>Open to Work</h3>
+                    <p>Cybersecurity & Motion Design roles</p>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="https://linkedin.com/in/jvanimations" class="btn btn-primary" target="_blank">Connect on LinkedIn</a>
+                <a href="#" class="btn btn-secondary">Download Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Jayasri Vijayakumar. Crafted with creativity and secured with expertise.</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.experience-card, .cert-card, .contact-item').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Dynamic background animation
+        const animatedBg = document.querySelector('.animated-bg');
+        let mouseX = 0, mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX / window.innerWidth;
+            mouseY = e.clientY / window.innerHeight;
+            
+            animatedBg.style.transform = `translate(${mouseX * 20}px, ${mouseY * 20}px)`;
+        });
+    </script>
+</body>
+</html>
